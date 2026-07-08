@@ -1,0 +1,34 @@
+backend:
+  replicaCount: 4
+
+  image:
+    repository: syedfurkhan/enterprise-backend
+    tag: latest
+
+  service:
+    type: ClusterIP
+    port: 5000
+
+frontend:
+  replicaCount: 2
+
+  image:
+    repository: syedfurkhan/enterprise-frontend
+    tag: latest
+
+  service:
+    type: NodePort
+    port: 80
+
+postgres:
+  image:
+    repository: postgres
+    tag: "15"
+
+  database: devopsdb
+
+  username: postgres
+
+  password: postgres123
+
+  storage: 2Gi
