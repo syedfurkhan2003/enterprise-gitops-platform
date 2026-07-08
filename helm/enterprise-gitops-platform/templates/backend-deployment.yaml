@@ -28,13 +28,13 @@ spec:
         - containerPort: 5000
 
         resources:
-         requests:
-           cpu: "250m"
-           memory: "256Mi"
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
 
-         limits:
-          cpu: "500m"
-          memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
 
         startupProbe:
           httpGet:
@@ -42,7 +42,6 @@ spec:
             port: 5000
           failureThreshold: 30
           periodSeconds: 5
-
 
         livenessProbe:
           httpGet:
@@ -53,7 +52,7 @@ spec:
 
         readinessProbe:
           httpGet:
-           path: /
-           port: 5000
+            path: /
+            port: 5000
           initialDelaySeconds: 5
           periodSeconds: 5

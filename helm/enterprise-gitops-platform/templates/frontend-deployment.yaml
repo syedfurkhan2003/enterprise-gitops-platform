@@ -4,8 +4,9 @@ kind: Deployment
 metadata:
   name: frontend
   namespace: {{ .Release.Namespace }}
+
 spec:
-  replicas: 2
+  replicas: {{ .Values.frontend.replicaCount }}
 
   selector:
     matchLabels:
@@ -21,5 +22,30 @@ spec:
       - name: frontend
         image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
 
+        imagePullPolicy: Always
+
         ports:
         - containerPort: 80
+
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
