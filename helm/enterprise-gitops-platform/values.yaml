@@ -10,7 +10,7 @@ backend:
     port: 5000
 
 frontend:
-  replicaCount: 3
+  replicaCount: 5
 
   image:
     repository: syedfurkhan/enterprise-frontend
