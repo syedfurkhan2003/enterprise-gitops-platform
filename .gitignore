@@ -1,0 +1,15 @@
+﻿# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Kubernetes
+kubeconfig
+
+# IDE
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
